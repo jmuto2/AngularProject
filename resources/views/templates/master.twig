@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="player_app">
 <head>
     <meta charset="UTF-8">
     <title>My AngularJS App</title>
@@ -19,7 +19,7 @@
         margin-top: 10%
     }
 </style>
-<body>
+<body ng-controller="AppCtrl">
     {% include 'templates/partials/navigation.twig' %}
     <div class="container contain">
         {% block content %}{% endblock %}
