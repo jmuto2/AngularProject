@@ -27,22 +27,22 @@
         }
     </style>
     <div id="players_app">
-    <section>
-        <div class="row text-center">
-            <div class="col m12">
-                <h2 class="label"><strong>Tonights starting line up:</strong></h2>
-                <button class="btn blue" ng-click="getPlayers()">Show Players</button>
-                <h2 class="label"><strong>Players</strong></h2>
-                <table id="players_table" class="table table-striped">
-                    <tfoot>
-                    <tr>
-                        <th class="text-center">Number</th>
-                        <th class="text-center">First Name</th>
-                        <th class="text-center">Last Name</th>
-                        <th class="text-center">Position</th>
-                        <th class="text-center">Batting Order</th>
-                    </tr>
-                    {% verbatim %}
+        <section>
+            <div class="row text-center">
+                <div class="col m12">
+                    <h2 class="label"><strong>Tonights starting line up:</strong></h2>
+                    <button class="btn blue" ng-click="getPlayers()">Show Players</button>
+                    <h2 class="label"><strong>Players</strong></h2>
+                    <table id="players_table" class="table table-striped">
+                        <tfoot>
+                        <tr>
+                            <th class="text-center">Number</th>
+                            <th class="text-center">First Name</th>
+                            <th class="text-center">Last Name</th>
+                            <th class="text-center">Position</th>
+                            <th class="text-center">Batting Order</th>
+                        </tr>
+                        {% verbatim %}
                     <tr ng-repeat="player in players">
                         <td class="text-center">{{ player.id }}</td>
                         <td class="text-center">{{ player.first_name }}</td>
@@ -52,41 +52,41 @@
                         <td class="text-center"></td>
                     </tr>
                    {% endverbatim %}
-                    </tfoot>
-                </table>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     </div>
-<script>
-    var app = angular.module('player_app', []);
+    <script>
+        var app = angular.module('player_app', []);
 
-    app.controller('AppCtrl', ['$scope', 'AppService',
-        function ($scope, AppService) {
+        app.controller('AppCtrl', ['$scope', 'AppService',
+            function ($scope, AppService) {
 
-        $scope.getPlayers = function () {
-            $scope.players = AppService.getPlayers();
-        }
-    }]);
+                $scope.getPlayers = function () {
+                    $scope.players = AppService.getPlayers();
+                }
+            }]);
 
-    app.factory('AppService', ['$http', function ($http) {
+        app.factory('AppService', ['$http', function ($http) {
 
-        function getPlayers() {
-            return [
-                {'id': 1, 'first_name': 'Joe', 'last_name': 'Muto', 'position': 'Center Field', 'order': 4},
-                {'id': 2, 'first_name': 'Pete', 'last_name': 'Smith', 'position': 'Short Stop', 'order': 2},
-                {'id': 3, 'first_name': 'Larry', 'last_name': 'Fitzgerald', 'position': 'Third Base', 'order': 1},
-                {'id': 4, 'first_name': 'Scott', 'last_name': 'Grates', 'position': 'Second Base', 'order': 5},
-                {'id': 5, 'first_name': 'Mike', 'last_name': 'Young', 'position': 'First Base', 'order': 3},
-                {'id': 6, 'first_name': 'Chris', 'last_name': 'Muto', 'position': 'DH', 'order': 6},
-                {'id': 7, 'first_name': 'Tony', 'last_name': 'Barkett', 'position': 'Starting Pitcher', 'order': 9},
-                {'id': 8, 'first_name': 'Rick', 'last_name': 'Bernier', 'position': 'Catcher', 'order': 7},
-                {'id': 9, 'first_name': 'Kevin', 'last_name': 'Knipe', 'position': 'Left Field', 'order': 8}
-            ];
-        }
-        return {
-            getPlayers: getPlayers
-        };
-    }]);
-</script>
+            function getPlayers() {
+                return [
+                    {'id': 1, 'first_name': 'Joe', 'last_name': 'Muto', 'position': 'Center Field', 'order': 4},
+                    {'id': 2, 'first_name': 'Pete', 'last_name': 'Smith', 'position': 'Short Stop', 'order': 2},
+                    {'id': 3, 'first_name': 'Larry', 'last_name': 'Fitzgerald', 'position': 'Third Base', 'order': 1},
+                    {'id': 4, 'first_name': 'Scott', 'last_name': 'Grates', 'position': 'Second Base', 'order': 5},
+                    {'id': 5, 'first_name': 'Mike', 'last_name': 'Young', 'position': 'First Base', 'order': 3},
+                    {'id': 6, 'first_name': 'Chris', 'last_name': 'Muto', 'position': 'DH', 'order': 6},
+                    {'id': 7, 'first_name': 'Tony', 'last_name': 'Barkett', 'position': 'Starting Pitcher', 'order': 9},
+                    {'id': 8, 'first_name': 'Rick', 'last_name': 'Bernier', 'position': 'Catcher', 'order': 7},
+                    {'id': 9, 'first_name': 'Kevin', 'last_name': 'Knipe', 'position': 'Left Field', 'order': 8}
+                ];
+            }
+            return {
+                getPlayers: getPlayers
+            };
+        }]);
+    </script>
 {% endblock %}
